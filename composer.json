@@ -1,0 +1,54 @@
+{
+    "name": "toporia/dominion",
+    "description": "Enterprise-grade Role-Based Access Control (RBAC) package for Toporia Framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Phungtruong7820",
+            "email": "minhphung485@gmail.com"
+        }
+    ],
+    "keywords": [
+        "toporia",
+        "dominion",
+        "rbac",
+        "roles",
+        "permissions",
+        "authorization",
+        "access-control",
+        "acl"
+    ],
+    "require": {
+        "php": ">=8.1",
+        "toporia/framework": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Toporia\\Dominion\\": "src/"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Toporia\\Dominion\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "toporia": {
+            "providers": [
+                "Toporia\\Dominion\\DominionServiceProvider"
+            ],
+            "config": {
+                "dominion": "config/dominion.php"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
