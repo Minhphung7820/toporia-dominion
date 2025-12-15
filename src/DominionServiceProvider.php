@@ -110,7 +110,7 @@ final class DominionServiceProvider extends ServiceProvider
         }
 
         // Register console commands
-        if ($this->app->runningInConsole()) {
+        if (app()->runningInConsole()) {
             $this->registerCommands($container);
         }
     }
