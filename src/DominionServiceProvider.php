@@ -101,6 +101,9 @@ final class DominionServiceProvider extends ServiceProvider
      */
     public function boot(ContainerInterface $container): void
     {
+        // Load migrations from package
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations', $container);
+
         // Register middleware aliases
         $this->registerMiddlewareAliases($container);
 
