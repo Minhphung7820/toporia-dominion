@@ -20,13 +20,27 @@ Enterprise-grade Role-Based Access Control (RBAC) package for Toporia Framework.
 composer require toporia/dominion
 ```
 
-The package will auto-register via Toporia's package discovery.
+## Auto-Discovery
+
+This package uses Toporia's **Package Auto-Discovery** system. After installation:
+
+- **Service Provider** is automatically registered - no manual registration required
+- **Configuration** is automatically discovered from `extra.toporia.config` in composer.json
+- **Migrations** are automatically included when running `php console migrate`
+
+To rebuild the package manifest manually:
+
+```bash
+php console package:discover
+```
 
 ## Configuration
 
 Publish the configuration file (optional):
 
 ```bash
+php console vendor:publish --provider="Toporia\Dominion\DominionServiceProvider"
+# Or with tag
 php console vendor:publish --tag=dominion-config
 ```
 
@@ -34,10 +48,23 @@ Or manually copy `config/dominion.php` to your application's `config/` directory
 
 ## Database Setup
 
-Run the migrations:
+Run migrations (includes package migrations automatically):
 
 ```bash
 php console migrate
+```
+
+Package migrations are automatically discovered from `packages/dominion/database/migrations/`.
+To skip package migrations:
+
+```bash
+php console migrate --no-packages
+```
+
+To view all migration paths including packages:
+
+```bash
+php console migrate:status
 ```
 
 ## Quick Start
